@@ -4,6 +4,25 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .textField__input {
+    @apply w-full py-3 px-4 rounded-xl text-secondary-900
+             border border-gray-100 outline-none hover:border-primary-300
+              focus:shadow-lg focus:shadow-primary-200
+               focus:border-primary-500 focus:bg-white transition-all
+                duration-300 ease-in-out;
+  }
+
+  .btn {
+    @apply px-3 py-1 font-bold rounded-xl transition-all duration-300
+  }
+  .btn--primary {
+    @apply px-4 py-3 w-full bg-primary-900 text-secondary-100 hover:bg-primary-800 shadow-lg shadow-primary-300
+  }
+  .btn--secondary {
+    @apply bg-secondary-500 
+  }
+}
 @layer base {
   :root {
     &,
@@ -182,4 +201,7 @@ table td {
   color: rgb(var(--color-secondary-600));
 }
 
+label {
+  display: block;
+}
 /*  react tag input */
