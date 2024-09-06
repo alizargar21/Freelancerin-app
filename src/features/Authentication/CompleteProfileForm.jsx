@@ -18,8 +18,19 @@ const CompleteProfileForm = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      const { message, user } = await mutateAsync({ name, email, role });
+      const { message } = await mutateAsync({ name , email, role });
       toast.success(message);
+      
+      if (Number(user.status) !== 2) {
+        navigate("/");
+        toast("پروفایل شما در انتظار تایید است", { icon: "👏" });
+        return;
+      }
+      if (user.role === "OWNER") return navigate("/owner");
+      if (user.role === "FREELANCER") return navigate("/freelancer");
+      if (user.role === "ADMIN") return navigate("/admin");
+      
+    
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }

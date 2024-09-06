@@ -3,7 +3,7 @@ import React from "react";
 const RadioInput = ({ name, value, label, onChange, id , checked}) => {
   return (
     <div className="flex   text-secondary-600 items-center gap-x-2">
-      <label htmlFor="OWNER">{label}</label>
+      <label htmlFor={id}>{label}</label>
       <input
         onChange={onChange}
         checked={checked}
