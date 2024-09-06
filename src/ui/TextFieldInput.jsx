@@ -1,6 +1,6 @@
 import React from "react";
 
-const TextFieldInput = ({ label, onChange, name, value,  }) => {
+const TextFieldInput = ({ label, onChange, name, value, type = "text" }) => {
   return (
     <div>
       <label htmlFor={name} className="mb-2 block">
@@ -8,7 +8,7 @@ const TextFieldInput = ({ label, onChange, name, value,  }) => {
       </label>
       <input
         id={name}
-        type="text"
+        type={type}
         className="textField__input"
         onChange={onChange}
         autoComplete="off"

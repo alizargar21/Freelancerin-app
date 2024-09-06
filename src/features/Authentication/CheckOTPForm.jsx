@@ -6,13 +6,14 @@ import { checkOtp } from "../../services/authServices";
 import toast from "react-hot-toast";
 import { HiArrowRight } from "react-icons/hi";
 import { CiEdit } from "react-icons/ci";
+import Loading from "../../ui/Loading";
 
 const RESEND_TIME = 90;
 const CheckOTPForm = ({ phoneNumber, onBack, OnReSendOtp, otpResponse }) => {
   const [otp, setOtp] = useState("");
   const [time, setTime] = useState(RESEND_TIME);
 
-  const { isPending, error, data, mutateAsync } = useMutation({
+  const { isPending, user, mutateAsync } = useMutation({
     mutationFn: checkOtp,
   });
   useEffect(() => {
@@ -30,6 +31,10 @@ const CheckOTPForm = ({ phoneNumber, onBack, OnReSendOtp, otpResponse }) => {
     try {
       const { message } = await mutateAsync({ phoneNumber, otp });
       toast.success(message);
+      if (user.isActive) {
+      } else {
+        Navigate("complete-profile");
+      }
     } catch (error) {
       toast.error(error?.response?.data?.message);
     }
@@ -75,7 +80,17 @@ const CheckOTPForm = ({ phoneNumber, onBack, OnReSendOtp, otpResponse }) => {
           renderInput={(props) => <input {...props} />}
           inputType="number"
         />
-        <Button className={"btn btn--primary"} title={" تایید"} />
+        <div>
+          {isPending ? (
+            <Loading />
+          ) : (
+            <Button
+              className={"btn btn--primary"}
+              title={" تایید"}
+              type="submit"
+            />
+          )}
+        </div>
       </form>
     </div>
   );
