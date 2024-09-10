@@ -8,10 +8,18 @@ const Sidebar = () => {
     <div className="bg-secondary-100 row-start-1 row-span-2 border-l border-gray-200 p-4">
       <ul className="flex flex-col gap-y-4">
         <li>
-          <CustomeNavlink path="/owner/dashboard" icon={<HiHome />}  title={"داشبورد"}/>
+          <CustomeNavlink
+            path="/owner/dashboard"
+            icon={<HiHome />}
+            title={"داشبورد"}
+          />
         </li>
         <li>
-        <CustomeNavlink path="/owner/projects" icon={<HiCollection />}  title={" پروژه ها"}/>
+          <CustomeNavlink
+            path="/owner/projects"
+            icon={<HiCollection />}
+            title={" پروژه ها"}
+          />
         </li>
         <li>
           <NavLink to={"/owner/dashboard"}></NavLink>

@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+import useOwnerProjects from "../features/projects/useOwnerProjects";
+import ProjectsTable from "../features/projects/ProjectsTable";
 
 const Projects = () => {
   return (
-    <div>Projects</div>
-  )
-}
+    <div>
+      <ProjectsTable />
+    </div>
+  );
+};
 
-export default Projects
+export default Projects;
