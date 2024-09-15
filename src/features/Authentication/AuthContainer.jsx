@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SendOTPForm from "./SendOTPForm,";
 import CheckOTPForm from "./CheckOTPForm";
 import { useMutation, useQuery } from "@tanstack/react-query";
 import { getOtp } from "../../services/authServices";
 import toast from "react-hot-toast";
 const AuthContainer = () => {
-  const [step, setStep] = useState(2);
-  const [phoneNumber, setPhoneNumber] = useState("09181111111");
+  const [step, setStep] = useState(1);
+  const [phoneNumber, setPhoneNumber] = useState("");
+  useEffect(()=>{
+    console.log(phoneNumber);
+  } , [phoneNumber])
 
   const {
     isPending: isSendingOtp,
@@ -18,12 +21,16 @@ const AuthContainer = () => {
   });
   const sendOtpHandler = async (e) => {
     e.preventDefault();
+   
     try {
-      const { data } = await mutateAsync({ phoneNumber });
-      toast.success(data.message);
+      const { message } = await mutateAsync({ phoneNumber });
+      toast.success(message);
+      console.log(message)
+
       setStep(2);
     } catch (error) {
       toast.error(error?.response?.data?.message);
+      console.log(error)
     }
   };
   const renderStep = () => {
@@ -33,6 +40,7 @@ const AuthContainer = () => {
           <SendOTPForm
             isSendingOtp={isSendingOtp}
             phoneNumber={phoneNumber}
+            onSubmit={(e)=>sendOtpHandler(e)}
             onChange={(e) => setPhoneNumber(e.target.value)}
           />
         );

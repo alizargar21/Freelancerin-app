@@ -1,4 +1,4 @@
-import { http } from "./httpServices";
+import  http  from "./httpServices";
 
 export function getOtp(data) {
   return http.post("/user/get-otp", data).then(({data})=>data.data);
@@ -13,4 +13,7 @@ export function completeProfile(data) {
 }
 export function getUser() {
   return http.get("/user/profile").then(({data})=>data.data)
+}
+export function logoutApi() {
+  return http.post("/user/logout").then(({data})=>data.data)
 }

@@ -8,9 +8,9 @@ const SendOTPForm = ({  phoneNumber , onChange , isSendingOtp , onSubmit}) => {
 
   return (
     <div>
-      <form className="space-y-4" onSubmit={onSubmit}>
+      <form className="space-y-8 py-7 " onSubmit={onSubmit}>
         <TextFieldInput
-          label={"    شماره موبایل"}
+          label={"شماره موبایل"}
           name={"phoneNumber"}
           value={phoneNumber}
           onChange={onChange}
@@ -20,9 +20,9 @@ const SendOTPForm = ({  phoneNumber , onChange , isSendingOtp , onSubmit}) => {
             <Loading />
           ) : (
             <Button
-              className={"btn btn--primary"}
-              title={"ارسال کد تایید"}
-              type="submit"
+            className={"btn btn--primary"}
+            title={"ارسال کد تایید"}
+            type="submit"
             />
           )}
         </div>
@@ -32,3 +32,4 @@ const SendOTPForm = ({  phoneNumber , onChange , isSendingOtp , onSubmit}) => {
 };
 
 export default SendOTPForm;
+

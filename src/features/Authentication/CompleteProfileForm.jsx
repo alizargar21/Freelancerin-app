@@ -42,12 +42,14 @@ const CompleteProfileForm = () => {
           <TextFieldInput
             label="نام و نام خانوادگی"
             name="name"
+            value={name}
             onChange={(e) => setName(e.target.value)}
           />
           <TextFieldInput
             label="ایمیل"
             name="email"
-            type="email"
+            // type="email"
+            value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <div className="flex items-center justify-center gap-x-8">
@@ -56,11 +58,12 @@ const CompleteProfileForm = () => {
               id="OWNER"
               name="role"
               value="OWNER"
+              checked={role === "OWNER"}
               onChange={(e) => setRole(e.target.value)}
             />
             <RadioInput
               label="فریلنسر"
-              checked={true}
+              checked={role === "FREELANCER"}
               id="FREELANCER"
               name="role"
               onChange={(e) => setRole(e.target.value)}
