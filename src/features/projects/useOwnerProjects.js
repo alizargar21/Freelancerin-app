@@ -3,9 +3,9 @@ import { useQuery } from "@tanstack/react-query";
 
 export default function useOwnerProjects() {
   const { data, isLoading } = useQuery({
-    queryKey: ["projects"],
+    queryKey: ["owner-projects"],
     queryFn: getOwnerProjectsApi,
-    retry: false,
+    
   });
   const { projects } = data || {};
   return { projects, isLoading };
