@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import useOwnerProjects from "./useOwnerProjects";
 import Loading from "../../ui/Loading";
 import Empty from "../../ui/Empty";
@@ -12,7 +12,9 @@ const ProjectsTable = () => {
   const { projects, isLoading } = useOwnerProjects();
   if (isLoading) return <Loading />;
   if (!projects.length) return <Empty resourceName=" پروژه ای" />;
-
+  useEffect(() => {
+    console.log(projects);
+  }, []);
   return (
     <Table>
       <Table.Header>
@@ -27,8 +29,8 @@ const ProjectsTable = () => {
         <th>کارفرما</th>
       </Table.Header>
       <Table.Body>
-        {projects.map((p, index) => (
-          <ProjectRow project={p} index={index} key={p._id} />
+        {projects.map((project, index) => (
+          <ProjectRow project={project} index={index} key={project._id} />
         ))}
       </Table.Body>
     </Table>

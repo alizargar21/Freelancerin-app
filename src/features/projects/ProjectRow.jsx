@@ -1,21 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Table from "../../ui/Table";
 import { toPersianNumbersWithComma } from "../../utils/toPersianNumber";
 import truncateText from "../../utils/truncateText";
 import toLocalDateShort from "../../utils/toLocalDateShort";
-import {HiOutlineTrash } from "react-icons/hi"
-import {TbPencilMinus } from "react-icons/tb"
+import { HiOutlineTrash } from "react-icons/hi";
+import { TbPencilMinus } from "react-icons/tb";
 import Modal from "../../ui/Modal";
-
-const ProjectRow = ({ project, key, index }) => {
-  const [isEditOpen , setIsEditOpen] = useState(false)
-
-
-
+import Button from "../../ui/Button";
+import ConfirmDelete from "../../ui/ConfirmDelete";
+import useRemoveProject from "./useRemoveProject";
+const ProjectRow = ({ project, index }) => {
+  const [isEditOpen, setIsEditOpen] = useState(false);
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+const {isDeleting , removeProject } = useRemoveProject()
   return (
-    <Table.Row key={project._id}>
+    <Table.Row >
       <td>{index + 1}</td>
-      <td>{truncateText(p.title, 30)}</td>
+      <td>{truncateText(project.title, 30)}</td>
       <td>{project.category.title}</td>
       <td>{toPersianNumbersWithComma(project.budget)}</td>
       <td>{toLocalDateShort(project.deadline)}</td>
@@ -38,14 +39,38 @@ const ProjectRow = ({ project, key, index }) => {
       </td>
       <td>
         <div className="flex">
-          <button className="" onClick={setIsEditOpen(true)}>
-            <TbPencilMinus />
-            <Modal title={"this is modal"} onClose={()=>setIsEditOpen(false)} isOpen={isEditOpen}  />
-          </button>
-        <button>
-        <HiOutlineTrash />
+          <>
+            <Button
+              className=""
+              title={<TbPencilMinus />}
+              onClick={() => setIsEditOpen(true)}
+            />
 
-        </button>
+            <Modal
+              title={"this is modal"}
+              onClose={() => setIsEditOpen(false)}
+              isOpen={isEditOpen}
+            />
+          </>
+          <>
+            <Button
+              title={<HiOutlineTrash />}
+              onClick={() => setIsDeleteOpen(true)}
+            />
+
+            <Modal
+              title={`حذف ${project.title}`}
+              onClose={() => setIsDeleteOpen(false)}
+              isOpen={isDeleteOpen}
+            >
+              <ConfirmDelete
+              resourceName={project.title}
+              onClose={()=>setIsDeleteOpen(false)}
+              onConfirm={()=>removeProject(project._id , {onSuccess : (data)=> setIsDeleteOpen(false)})}
+              isDisabled={false}
+              />
+            </Modal>
+          </>
         </div>
       </td>
     </Table.Row>
