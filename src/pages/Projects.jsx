@@ -1,6 +1,7 @@
 import React from "react";
-import useOwnerProjects from "../features/projects/useOwnerProjects";
-import ProjectsTable from "../features/projects/ProjectsTable";
+import ProjectsTable from "../features/projects/ProjectTable";
+
+
 
 const Projects = () => {
   return (

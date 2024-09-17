@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import Table from "../../ui/Table";
 import { toPersianNumbersWithComma } from "../../utils/toPersianNumber";
 import truncateText from "../../utils/truncateText";
 import toLocalDateShort from "../../utils/toLocalDateShort";
+import {HiOutlineTrash } from "react-icons/hi"
+import {TbPencilMinus } from "react-icons/tb"
+import Modal from "../../ui/Modal";
 
 const ProjectRow = ({ project, key, index }) => {
+  const [isEditOpen , setIsEditOpen] = useState(false)
+
+
+
   return (
     <Table.Row key={project._id}>
       <td>{index + 1}</td>
@@ -28,6 +35,18 @@ const ProjectRow = ({ project, key, index }) => {
         ) : (
           <span className="badge badge-danger">بسته</span>
         )}
+      </td>
+      <td>
+        <div className="flex">
+          <button className="" onClick={setIsEditOpen(true)}>
+            <TbPencilMinus />
+            <Modal title={"this is modal"} onClose={()=>setIsEditOpen(false)} isOpen={isEditOpen}  />
+          </button>
+        <button>
+        <HiOutlineTrash />
+
+        </button>
+        </div>
       </td>
     </Table.Row>
   );

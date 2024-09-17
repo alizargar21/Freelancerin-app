@@ -6,7 +6,7 @@ import truncateText from "../../utils/truncateText";
 import toLocalDateShort from "../../utils/toLocalDateShort";
 import { toPersianNumbersWithComma } from "../../utils/toPersianNumber";
 
-const ProjectsTable = () => {
+const ProjectsTable_v1 = () => {
   const { projects, isLoading } = useOwnerProjects();
   if (isLoading) return <Loading />;
   if (!projects.length) return <Empty resourceName=" پروژه ای"  />;
@@ -56,4 +56,4 @@ const ProjectsTable = () => {
   );
 };
 
-export default ProjectsTable;
+export default ProjectsTable_v1;
