@@ -10,11 +10,9 @@ import ProjectRow from "./ProjectRow";
 
 const ProjectsTable = () => {
   const { projects, isLoading } = useOwnerProjects();
+
   if (isLoading) return <Loading />;
   if (!projects.length) return <Empty resourceName=" پروژه ای" />;
-  useEffect(() => {
-    console.log(projects);
-  }, []);
   return (
     <Table>
       <Table.Header>

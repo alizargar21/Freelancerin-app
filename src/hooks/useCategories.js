@@ -7,7 +7,7 @@ export default function useCategories (){
                     queryFn : getCategoryApi
           })
           const {categories : rawCategories = []} = data || {};
-          const categories = categories.map((item) => ({
+          const categories = rawCategories.map((item) => ({
                     label : item.title,
                     value : item._id
           }))
