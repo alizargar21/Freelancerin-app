@@ -1,18 +1,20 @@
 import React from "react";
 
-const RadioInput = ({ name, value, label, onChange, id , checked}) => {
+const RadioInput = ({ name, value, label, register, id, errors, watch , validationSchema}) => {
   return (
     <div className="flex   text-secondary-600 items-center gap-x-2">
-      <label htmlFor={id}>{label}</label>
       <input
-        onChange={onChange}
-        checked={checked}
+      
         type="radio"
         className="form-radio cursor-pointer"
         name={name}
+        {...register(name , validationSchema)}
         id={id}
+        checked={watch(name) === value}
         value={value}
       />
+      <label htmlFor={id}>{label}</label>
+  
     </div>
   );
 };

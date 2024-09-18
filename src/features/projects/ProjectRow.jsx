@@ -9,6 +9,7 @@ import Modal from "../../ui/Modal";
 import Button from "../../ui/Button";
 import ConfirmDelete from "../../ui/ConfirmDelete";
 import useRemoveProject from "./useRemoveProject";
+import CreateProjectForm from "./CreateProjectForm"
 const ProjectRow = ({ project, index }) => {
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
@@ -51,6 +52,10 @@ const {isDeleting , removeProject } = useRemoveProject()
               onClose={() => setIsEditOpen(false)}
               isOpen={isEditOpen}
             />
+                <CreateProjectForm
+                projectToEdit={project}
+                onClose={() => setIsEditOpen(false)}
+              />
           </>
           <>
             <Button
