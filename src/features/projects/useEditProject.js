@@ -1,13 +1,13 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { createProjectApi } from "../../services/ProjectsService";
+import { editProjectApi } from "../../services/ProjectsService";
 import toast from "react-hot-toast";
 
-export default function useCreateProject() {
+export default function useEditProject() {
   const queryClient = useQueryClient();
 
-  const { isPending: isCreating, mutate: createProject } = useMutation({
-    mutationFn: createProjectApi,
-    mutationKey: "",
+  const { isPending: isEditing, mutate: editProject } = useMutation({
+    mutationFn: editProjectApi,
+    
     onSuccess: (data) => {
       toast.success(data.message);
       //? for resend get request and give all project again
@@ -17,7 +17,9 @@ export default function useCreateProject() {
     },
     onError: (err) => {
       toast.error(err?.response?.data?.message);
+     
+
     },
   });
-  return { isCreating, createProject };
+  return { isEditing, editProject };
 }
