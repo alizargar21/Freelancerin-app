@@ -16,7 +16,7 @@ const ProjectsTable = () => {
   return (
     <Table>
       <Table.Header>
-        <th>#</th>
+      <th>#</th>
         <th>عنوان پروژه</th>
         <th>دسته بندی</th>
         <th>بودجه</th>
@@ -24,7 +24,8 @@ const ProjectsTable = () => {
         <th>تگ ها</th>
         <th>فریلنسر</th>
         <th>وضعیت</th>
-        <th>کارفرما</th>
+        <th>عملیات</th>
+        <th>درخواست ها</th>
       </Table.Header>
       <Table.Body>
         {projects.map((project, index) => (
