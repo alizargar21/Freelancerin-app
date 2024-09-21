@@ -6,7 +6,7 @@ import DarkModeToggle from "./DarkModeToggle";
 import Logout from "../features/Authentication/Logout";
 const HeaderMenu = () => {
   return (
-    <ul className="flex gap-x-4 items-center justify-center bg-red-100">
+    <ul className="flex gap-x-4 items-center justify-center ">
       <li className="flex">
         <Link to={"dashboard"}>
           <Button

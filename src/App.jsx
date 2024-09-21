@@ -12,11 +12,13 @@ import Owner from "./pages/Owner";
 import OwnerDashboard from "./pages/OwnerDashboard";
 import Projects from "./pages/Projects";
 import Project from "./pages/Project";
+import { DarkModeProvider } from "./context/DarkModeContext";
 function App() {
-  const [count, setCount] = useState(0);
+  
   const queryClient = new QueryClient();
   return (
-    <QueryClientProvider client={queryClient}>
+  <DarkModeProvider>
+      <QueryClientProvider client={queryClient}>
       <Toaster />
       <Routes>
         <Route path="/" element={<Home />} />
@@ -31,6 +33,7 @@ function App() {
         <Route path="/complete-profile" element={<CompleteProfile />} />
       </Routes>
     </QueryClientProvider>
+  </DarkModeProvider>
   );
 }
 
