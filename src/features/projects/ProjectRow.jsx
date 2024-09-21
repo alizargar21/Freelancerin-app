@@ -3,7 +3,7 @@ import Table from "../../ui/Table";
 import { toPersianNumbersWithComma } from "../../utils/toPersianNumber";
 import truncateText from "../../utils/truncateText";
 import toLocalDateShort from "../../utils/toLocalDateShort";
-import { HiOutlineTrash } from "react-icons/hi";
+import { HiEye, HiOutlineTrash } from "react-icons/hi";
 import { TbPencilMinus } from "react-icons/tb";
 import Modal from "../../ui/Modal";
 import Button from "../../ui/Button";
@@ -11,6 +11,7 @@ import ConfirmDelete from "../../ui/ConfirmDelete";
 import useRemoveProject from "./useRemoveProject";
 import CreateProjectForm from "./CreateProjectForm";
 import ToggleProjectStatus from "./ToggleProjectStatus";
+import { Link } from "react-router-dom";
 const ProjectRow = ({ project, index }) => {
   const [isEditOpen, setIsEditOpen] = useState(false);
   const [isDeleteOpen, setIsDeleteOpen] = useState(false);
@@ -36,13 +37,14 @@ const ProjectRow = ({ project, index }) => {
       <td>
       <ToggleProjectStatus project={project}/>
       </td>
-      <td>
+     
+      {/* <td>
         {project.status === "OPEN" ? (
           <span className="badge badge--success">باز</span>
         ) : (
           <span className="badge badge--danger">بسته</span>
         )}
-      </td>
+      </td> */}
       <td>
         <div className="flex items-center gap-x-4">
           <>
@@ -87,6 +89,11 @@ const ProjectRow = ({ project, index }) => {
             </Modal>
           </>
         </div>
+      </td>
+      <td>
+        <Link to={project._id} className="flex justify-center">
+        <HiEye  className="w-5 h-5 text-primary-400"/>
+        </Link>
       </td>
     </Table.Row>
   );
