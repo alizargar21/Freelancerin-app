@@ -4,34 +4,34 @@ import {
   HiCurrencyDollar,
   HiOutlineViewGrid,
 } from "react-icons/hi";
-import Stat from "./Stat";
+import Stat from "../../ui/Stat";
 
-const DashboardStats = ({ projects }) => {
+const DashboardStats = ({ proposals }) => {
   const numOfProjects = projects.length;
-  const numOfAcceptedProjects = projects.map((p) => p.status === 2).length;
+  const numOfAcceptedProjects = projects.filter((p) => p.status === 2).length;
   const numOfProposals = projects.reduce(
     (acc, curr) => curr.proposals.length + acc,
     0
   );
   return (
     <div className="grid grid-cols-2 gap-8">
-      <Stat
+        <Stat
         color="primary"
-        icon={<HiOutlineViewGrid className="h-20 w-20" />}
-        title={"کل پروژه ها"}
+        title="پروژه ها"
         value={numOfProjects}
+        icon={<HiOutlineViewGrid className="w-20 h-20" />}
       />
       <Stat
         color="green"
-        icon={<HiCurrencyDollar className="h-20 w-20" />}
         title="پروژه های واگذار شده"
         value={numOfAcceptedProjects}
+        icon={<HiCurrencyDollar className="w-20 h-20" />}
       />
       <Stat
         color="orange"
-        icon={<HiCollection className="h-20 w-20" />}
         title="درخواست ها"
         value={numOfProposals}
+        icon={<HiCollection className="w-20 h-20" />}
       />
     </div>
   );
