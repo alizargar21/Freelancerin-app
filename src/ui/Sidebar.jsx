@@ -1,21 +1,22 @@
 import React from "react";
 import { HiCollection, HiHome } from "react-icons/hi";
 import { NavLink } from "react-router-dom";
-import CustomeNavlink from "./CustomeNavlink";
+import CustomNavLink from "./CustomNavLink";
 
-const Sidebar = () => {
+const Sidebar = ({children}) => {
   return (
     <div className="bg-secondary-100 row-start-1 row-span-2 border-l border-gray-200 p-4">
       <ul className="flex flex-col gap-y-4">
-        <li>
-          <CustomeNavlink
+        {children}
+        {/* <li>
+          <CustomNavLink
             path="/owner/dashboard"
             icon={<HiHome />}
             title={"داشبورد"}
           />
         </li>
         <li>
-          <CustomeNavlink
+          <CustomNavLink
             path="/owner/projects"
             icon={<HiCollection />}
             title={" پروژه ها"}
@@ -23,7 +24,7 @@ const Sidebar = () => {
         </li>
         <li>
           <NavLink to={"/owner/dashboard"}></NavLink>
-        </li>
+        </li> */}
       </ul>
     </div>
   );
