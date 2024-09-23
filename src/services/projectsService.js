@@ -23,3 +23,9 @@ export function getProjectApi(id) {
   //{status:"OPEN"}
   return http.get(`/project/${id}`).then(({ data }) => data.data);
 }
+
+export function getProjectsApi(id) {
+
+  return http.get(`/project/list`).then(({ data }) => data.data);
+}
+
