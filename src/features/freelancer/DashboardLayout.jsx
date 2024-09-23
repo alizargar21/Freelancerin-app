@@ -1,7 +1,7 @@
 import React from "react";
 import Loading from "../../ui/Loading";
 import DashboardHeader from "./DashboardHeader";
-import { useProposals } from "../proposal/useProposals";
+import  useProposals  from "../proposal/useProposals";
 import Stats from "./Stats";
 
 const DashboardLayout = () => {

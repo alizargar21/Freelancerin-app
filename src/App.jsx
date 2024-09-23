@@ -15,7 +15,7 @@ import Project from "./pages/Project";
 import { DarkModeProvider } from "./context/DarkModeContext";
 import OwnerLayout from "./features/owner/OwnerLayout";
 import FreelancerDashboard from "./pages/FreelancerDashboard";
-import Proposals from "./features/freelancer/Proposals";
+import Proposals from "./features/proposal/Proposals";
 import SubmittedProjects from "./features/freelancer/SubmittedProjects";
 import FreelancerLayout from "./features/freelancer/FreelancerLayout";
 function App() {
