@@ -5,7 +5,7 @@ const Select = ({ options, onChange, value }) => {
     <select
       value={value}
       onChange={onChange}
-      className="textField__input py-2 text-xl"
+      className="textField__input py-2 "
     >
       {options.map((option) => (
         <option key={option.value} value={option.value}>
