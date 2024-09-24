@@ -2,13 +2,18 @@ import React, { useEffect } from "react";
 import useAuthorize from "../features/Authentication/useAuthorize";
 import { useNavigate } from "react-router-dom";
 import Loading from "./Loading";
+import toast from "react-hot-toast";
 
 const ProtectRoute = ({ children }) => {
-  const { isAuthenticated, isAuthorized, isLoading } = useAuthorize();
+  const { isAuthenticated, isAuthorized, isLoading, isVerify } = useAuthorize();
   const navigate = useNavigate();
   useEffect(() => {
     if (!isAuthenticated && !isLoading) navigate("/auth");
-    if (!isAuthorized && !isLoading) navigate("/not-access" , {replace : true});
+    if (!isVerify && !isLoading) {
+      toast.error("پروفایل شما هنوز تایید نشده است");
+      navigate("/not-access");
+    }
+    if (!isAuthorized && !isLoading) navigate("/not-access", { replace: true });
   }, [isAuthenticated, isAuthorized, isLoading, navigate]);
 
   if (isLoading)
@@ -17,9 +22,7 @@ const ProtectRoute = ({ children }) => {
         <Loading />
       </div>
     );
-  if (isAuthenticated && isAuthorized)  return children ;
-
-  
+  if (isAuthenticated && isAuthorized) return children;
 };
 
 export default ProtectRoute;

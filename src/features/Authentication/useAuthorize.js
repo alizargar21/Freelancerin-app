@@ -7,6 +7,8 @@ export default function useAuthorize() {
   let isAuthenticated = false;
   if (user) isAuthenticated = true;
   let isAuthorized = false;
+  let isVerify = false
+  if(user && Number(user.status )=== 2) isVerify = true
   const ROLES = {
     admin: "ADMIN",
     owner: "OWNER",
@@ -19,5 +21,5 @@ export default function useAuthorize() {
       isAuthorized = true;
     }
   }
-  return { isAuthenticated, isAuthorized, isLoading };
+  return { isAuthenticated, isAuthorized, isLoading , isVerify };
 }

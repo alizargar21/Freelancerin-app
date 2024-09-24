@@ -7,8 +7,6 @@ import { Toaster } from "react-hot-toast";
 import CompleteProfile from "./pages/CompleteProfile";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
-import AppLayout from "./ui/AppLayout";
-import Owner from "./pages/Owner";
 import OwnerDashboard from "./pages/OwnerDashboard";
 import Projects from "./pages/Projects";
 import Project from "./pages/Project";
@@ -20,6 +18,9 @@ import SubmittedProjects from "./features/freelancer/SubmittedProjects";
 import FreelancerLayout from "./features/freelancer/FreelancerLayout";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import ProtectRoute from "./ui/ProtectRoute";
+import AdminDashboard from "./pages/AdminDashboard";
+import AdminLayout from "./features/admin/AdminLayout";
+import Users from "./pages/Users";
 function App() {
   const queryClient = new QueryClient();
   return (
@@ -55,6 +56,19 @@ function App() {
             <Route path="dashboard" element={<FreelancerDashboard />} />
             <Route path="proposals" element={<Proposals />} />
             <Route path="projects" element={<SubmittedProjects />} />
+          </Route>
+          <Route
+            path="/admin"
+            element={
+              <ProtectRoute>
+                <AdminLayout />
+              </ProtectRoute>
+            }
+          >
+            <Route index element={<Navigate to="dashboard" />} replace />
+            <Route path="dashboard" element={<AdminDashboard />} />
+            <Route path="users" element={<Users />} />
+
           </Route>
           <Route path="/auth" element={<Auth />} />
           <Route path="/complete-profile" element={<CompleteProfile />} />

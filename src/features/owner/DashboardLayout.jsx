@@ -1,5 +1,5 @@
 import React from "react";
-import DashboardHeader from "./DashboardHeader";
+import DashboardHeader from "../../ui/DashboardHeader";
 import DashboardStats from "./DashboardStats";
 import useOwnerProjects from "../projects/useOwnerProjects";
 import Loading from "../../ui/Loading";
