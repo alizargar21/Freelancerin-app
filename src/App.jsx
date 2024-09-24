@@ -19,6 +19,7 @@ import Proposals from "./features/proposal/Proposals";
 import SubmittedProjects from "./features/freelancer/SubmittedProjects";
 import FreelancerLayout from "./features/freelancer/FreelancerLayout";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import ProtectRoute from "./ui/ProtectRoute";
 function App() {
   const queryClient = new QueryClient();
   return (
@@ -29,13 +30,27 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="*" element={<NotFound />} />
-          <Route path="/owner" element={<OwnerLayout />}>
+          <Route
+            path="/owner"
+            element={
+              <ProtectRoute>
+                <OwnerLayout />
+              </ProtectRoute>
+            }
+          >
             <Route index element={<Navigate to="dashboard" />} replace />
             <Route path="dashboard" element={<OwnerDashboard />} />
             <Route path="projects" element={<Projects />} />
             <Route path="projects/:id" element={<Project />} />
           </Route>
-          <Route path="/freelancer" element={<FreelancerLayout />}>
+          <Route
+            path="/freelancer"
+            element={
+              <ProtectRoute>
+                <FreelancerLayout />
+              </ProtectRoute>
+            }
+          >
             <Route index element={<Navigate to="dashboard" />} replace />
             <Route path="dashboard" element={<FreelancerDashboard />} />
             <Route path="proposals" element={<Proposals />} />

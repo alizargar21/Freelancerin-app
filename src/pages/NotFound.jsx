@@ -7,9 +7,9 @@ const NotFound = () => {
   const backHandler = useMoveBack();
   return (
     <div className="container xl:max-w-screen-xl">
-      <div className="sm:max-w-sm flex justify-center">
+      <div className="sm:max-w-sm flex justify-center pt-52">
         <div>
-          <h1 className="text-xl font-bold text-secondary-700 mb-8">
+          <h1 className="text-xl font-bold text-secondary-500  mb-8">
             صفحه ای که دنبالش بودید پیدا نشد
           </h1>
           <Button

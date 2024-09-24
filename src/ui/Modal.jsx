@@ -4,13 +4,13 @@ import { HiOutlineX } from "react-icons/hi";
 import useOutsideClick from "../hooks/useOutsideClick";
 
 const Modal = ({ children, onClose, isOpen, title }) => {
-  const ref = useOutsideClick();
+  const ref = useOutsideClick(onClose);
 
   return (
     isOpen && (
       <div
         className="backdrop-blur-sm fixed top-0 left-0 
-    w-full h-screen bg-secondary-800 bg-opacity-30"
+    w-full h-screen bg-secondary-800 bg-opacity-30 z-50"
       >
         <div
           ref={ref}
@@ -20,7 +20,7 @@ const Modal = ({ children, onClose, isOpen, title }) => {
         >
           <div className="flex items-center justify-between border-b pb-2 mb-6">
             <p className="text-secondary-700 font-bold text-base">{title}</p>
-            <Button onClick={onClose} title={<HiOutlineX />} />
+            <Button onClick={onClose} title={<HiOutlineX />} className={"text-secondary-500"} />
           </div>
           {children}
         </div>
